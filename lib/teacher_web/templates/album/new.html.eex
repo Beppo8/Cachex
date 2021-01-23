@@ -1,0 +1,5 @@
+<h2>New Record</h2>
+
+<%= render "form.html", Map.put(assigns, :action, album_path(@conn, :create)) %>
+
+<span><%= link "Back", to: album_path(@conn, :index) %></span>

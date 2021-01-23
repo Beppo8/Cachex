@@ -1,0 +1,39 @@
+<h2>Album Info</h2>
+
+<ul>
+  <li>
+    <strong>Title:</strong>
+    <%= @album.title %>
+  </li>
+
+  <li>
+    <strong>Summary:</strong>
+    <%= @album.summary %>
+  </li>
+
+  <li>
+    <strong>Year:</strong>
+    <%= @album.year %>
+  </li>
+
+  <li>
+    <strong>Popularity:</strong>
+    <%= @album.popularity %> percent of users like this album.
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @album.price %>
+  </li>
+</ul>
+<h3>Seller Info:</h3>
+<p>
+  <b>Email:</b>
+  <%= link @seller.email, to: "mailto:#{@seller.email}" %>
+</p>
+<p>
+  <b>Phone:</b>
+  <%= @seller.phone_number %>
+</p>
+
+<span><%= link "Back", to: album_path(@conn, :index) %></span>
