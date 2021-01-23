@@ -13,6 +13,7 @@
       <tr>
         <td><%= album.title %> by <%= album.artist %></td>
         <td><%= album.price %></td>
+        <td><%= category_name(album.category_id) %></td>
         <td>
           <%= link "like", to: "#",
                  data: [album: album.title],

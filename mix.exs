@@ -40,6 +40,7 @@ defmodule Teacher.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
+      {:cachex, "~> 3.3"},
       {:cowboy, "~> 1.0"}
     ]
   end

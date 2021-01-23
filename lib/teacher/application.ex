@@ -12,6 +12,8 @@ defmodule Teacher.Application do
       supervisor(Teacher.Repo, []),
       # Start the endpoint when the application starts
       supervisor(TeacherWeb.Endpoint, []),
+
+      Supervisor.child_spec(Cachex, start: {Cachex, :start_link, [:category_cache]})
       # Start your own worker by calling: Teacher.Worker.start_link(arg1, arg2, arg3)
       # worker(Teacher.Worker, [arg1, arg2, arg3]),
     ]
