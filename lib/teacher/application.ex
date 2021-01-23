@@ -4,7 +4,7 @@ defmodule Teacher.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
-    import Supervisor.Spec
+    import Cachex.Spec
 
     # Define workers and child supervisors to be supervised
     children = [
@@ -13,7 +13,19 @@ defmodule Teacher.Application do
       # Start the endpoint when the application starts
       supervisor(TeacherWeb.Endpoint, []),
 
-      Supervisor.child_spec(Cachex, start: {Cachex, :start_link, [:category_cache]})
+      Supervisor.child_spec(
+        Cachex,
+        start:
+        {Cachex, :start_link,
+         [
+           :category_cache,
+           [
+             warmers: [
+               warmer(module: Teacher.CategoryWarmer, state: "some state")
+             ]
+           ]
+         ]}
+      )
       # Start your own worker by calling: Teacher.Worker.start_link(arg1, arg2, arg3)
       # worker(Teacher.Worker, [arg1, arg2, arg3]),
     ]
